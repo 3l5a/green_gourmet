@@ -28,6 +28,9 @@ class Restaurant
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favorite')]
     private Collection $user;
 
+    #[ORM\ManyToOne(inversedBy: 'restaurant')]
+    private ?Category $category = null;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -97,6 +100,18 @@ class Restaurant
         if ($this->user->removeElement($user)) {
             $user->removeFavorite($this);
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
