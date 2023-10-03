@@ -26,7 +26,7 @@ class City
 
     #[ORM\ManyToOne(inversedBy: 'cities')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?departement $departement = null;
+    private ?Departement $departement = null;
 
     public function __construct()
     {
@@ -92,12 +92,12 @@ class City
         return $this;
     }
 
-    public function getDepartement(): ?departement
+    public function getDepartement(): ?Departement
     {
         return $this->departement;
     }
 
-    public function setDepartement(?departement $departement): static
+    public function setDepartement(?Departement $departement): static
     {
         $this->departement = $departement;
 
