@@ -38,20 +38,17 @@ class AppFixtures extends Fixture
         $user->setPassword($hash);
         $user->setRoles(['ROLE_USER']);
         $manager->persist($user);
-        $manager->flush();
 
         $departement = new Departement();
         $departement->setName('Hérault');
         $departement->setNumber('34');
         $manager->persist($departement);
-        $manager->flush();
 
         $city = new City();
         $city->setName('Montpellier');
         $city->setZipcode('34000');
         $city->setDepartement($departement);
         $manager->persist($city);
-        $manager->flush();
 
         $category = new Category();
         $category->setName('Vegan');
