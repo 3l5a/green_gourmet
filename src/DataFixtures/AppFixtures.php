@@ -20,42 +20,10 @@ class AppFixtures extends Fixture
     {
         
         $this->encoder = $encoder;
+        $this->faker = Factory::create();
         
     }
-    public function load(ObjectManager $manager): void
-    {
-        $superAdmin = new User();
-        $hash = $this->encoder->hashPassword($superAdmin, "password");
-        $superAdmin->setEmail("admin@gmail.com");
-        $superAdmin->setPassword($hash);
-        $superAdmin->setRoles(['ROLE_ADMIN']);
-        $manager->persist($superAdmin);
-        $manager->flush();
-
-        $user = new User();
-        $hash = $this->encoder->hashPassword($user, "password");
-        $user->setEmail("user@gmail.com");
-        $user->setPassword($hash);
-        $user->setRoles(['ROLE_USER']);
-        $manager->persist($user);
-
-        $departement = new Departement();
-        $departement->setName('Hérault');
-        $departement->setNumber('34');
-        $manager->persist($departement);
-
-        $city = new City();
-        $city->setName('Montpellier');
-        $city->setZipcode('34000');
-        $city->setDepartement($departement);
-        $manager->persist($city);
-
-        $category = new Category();
-        $category->setName('Vegan');
-        $manager->persist($category);
-        $manager->flush();
-
-    }
+ 
 
     public function generateDepartementData(EntityManagerInterface $entityManager): void
     {
@@ -95,8 +63,7 @@ class AppFixtures extends Fixture
     // Générez des données pour la table city
     for ($i = 0; $i < 3; $i++) { // Générer 3 enregistrements de villes (ajustez selon vos besoins)
         $name = $faker->city; // Générer un nom de ville aléatoire
-        $zipCode = $faker->postcode; // Générer un code postal aléatoire
-        
+        $zipCode = $faker->numberBetween(1, 99);
         // Créez une nouvelle instance de l'entité City (adaptez au nom de votre entité)
         $city = new City();
         $city->setName($name);
@@ -138,8 +105,92 @@ public function generateRestaurantData(EntityManagerInterface $entityManager): v
     $entityManager->flush();
 }
 
+public function load(ObjectManager $manager): void
+{   
+    $faker = Factory::create();
+
+    $superAdmin = new User();
+    $hash = $this->encoder->hashPassword($superAdmin, "password");
+    $superAdmin->setEmail("admin@gmail.com");
+    $superAdmin->setPassword($hash);
+    $superAdmin->setRoles(['ROLE_ADMIN']);
+    $manager->persist($superAdmin);
+    $manager->flush();
+
+    $user = new User();
+    $hash = $this->encoder->hashPassword($user, "password");
+    $user->setEmail("user@gmail.com");
+    $user->setPassword($hash);
+    $user->setRoles(['ROLE_USER']);
+    $manager->persist($user);
+
+    $departement = new Departement();
+    $departement->setName('Hérault');
+    $departement->setNumber('34');
+    $manager->persist($departement);
+
+    $city = new City();
+    $city->setName('Montpellier');
+    $city->setZipcode('34000');
+    $city->setDepartement($departement);
+    $manager->persist($city);
+
+    $category = new Category();
+    $category->setName('Vegan');
+    $manager->persist($category);
+   
+
+    // Incluez le fichier autoload.php de Composer pour charger Faker
+    require_once 'vendor/autoload.php';
+    
+    // Utilisez la factory pour créer une instance de Faker\Generator
+    $faker = Factory::create('fr_FR');
+
+    // Générez des données pour la table departement
+    for ($i = 0; $i < 3; $i++) { // Générer 3 enregistrements de départements (ajustez selon vos besoins)
+        $name = $faker->city; // Générer un nom de département fictif (vous pouvez ajuster le générateur en fonction de vos besoins)
+        $number = $faker->numberBetween(1, 99); // Générer un nombre aléatoire entre 1 et 100
+        
+        // Créez une nouvelle instance de l'entité Departement (adaptez au nom de votre entité)
+        $departement = new Departement();
+        $departement->setName($name);
+        $departement->setNumber($number);
+        
+        // Persistez l'entité dans la base de données
+        $manager->persist($departement);
+
+        for ($i = 0; $i < 3; $i++) { // Générer 3 enregistrements de villes (ajustez selon vos besoins)
+            $name = $faker->city; // Générer un nom de ville aléatoire
+            $zipCode = $faker->numberBetween(1, 99);
+            // Créez une nouvelle instance de l'entité City (adaptez au nom de votre entité)
+            $city = new City();
+            $city->setName($name);
+            $city->setZipCode($zipCode);
+            $city->setDepartement($departement);
+            
+            // Persistez l'entité dans la base de données
+            $manager->persist($city);
+        }
+        for ($i = 0; $i < 5; $i++) { // Générer 5 enregistrements de restaurants (ajustez selon vos besoins)
+            $name = 'Le ' . $faker->company; // Ajoutez "Le" au nom du restaurant généré
+            $address = $faker->address; // Générer une adresse fictive
+            
+            // Créez une nouvelle instance de l'entité Restaurant (adaptez au nom de votre entité)
+            $restaurant = new Restaurant();
+            $restaurant->setName($name);
+            $restaurant->setAddress($address);
+            $restaurant->setCity($city);
+        
+            // Persistez l'entité dans la base de données
+            $manager->persist($restaurant);
+        }
+        
+        }
+        $manager->flush();
 
 
-
+    }
 
 }
+
+
