@@ -1,0 +1,40 @@
+/* Styles pour la bannière */
+.banner {
+    width: 100%;
+    height: 200px; /* Ajustez la hauteur selon vos besoins */
+    display: flex;
+    flex-direction: column; /* Partie gauche au-dessus de la partie droite */
+}
+
+/* Style pour la partie supérieure (80%) de la bannière */
+.top-section {
+    flex: 8; /* Utilisez flex pour diviser l'espace verticalement (80%) */
+    background-color: #3498db; /* Couleur de fond de la partie supérieure */
+    color: #ffffff; /* Couleur du texte */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style pour la partie inférieure (20%) de la bannière */
+.bottom-section {
+    flex: 2; /* Utilisez flex pour diviser l'espace verticalement (20%) */
+    background-color: #2ecc71; /* Couleur de fond de la partie inférieure */
+    color: #ffffff; /* Couleur du texte */
+    text-align: center;
+    display: flex;
+    justify-content: space-around; /* Aligner horizontalement les boutons */
+    border-top: 20px solid #e74c3c; /* Ajouter une bordure de 20% en haut */
+}
+
+/* Style pour les boutons dans la partie inférieure */
+.button {
+    padding: 100 em;
+    background-color: #e74c3c; /* Couleur de fond des boutons */
+    color: #ffffff; /* Couleur du texte des boutons */
+    text-align: center;
+    text-decoration: none;
+    margin: 100 em;
+    border-radius: 100 em;
+}
