@@ -2,6 +2,7 @@
   --title-font: 'Gabarito', cursive;
   --text-font: 'IBM Plex Serif', serif;
   --primary: #1e8e3d;
+  --secondary: rgb(234, 249, 234);
 }
 
 section, nav, form {
