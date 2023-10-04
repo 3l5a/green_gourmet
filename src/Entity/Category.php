@@ -18,7 +18,7 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: restaurant::class)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Restaurant::class)]
     private Collection $restaurant;
 
     public function __construct()
@@ -44,14 +44,14 @@ class Category
     }
 
     /**
-     * @return Collection<int, restaurant>
+     * @return Collection<int, Restaurant>
      */
     public function getRestaurant(): Collection
     {
         return $this->restaurant;
     }
 
-    public function addRestaurant(restaurant $restaurant): static
+    public function addRestaurant(Restaurant $restaurant): static
     {
         if (!$this->restaurant->contains($restaurant)) {
             $this->restaurant->add($restaurant);
@@ -61,7 +61,7 @@ class Category
         return $this;
     }
 
-    public function removeRestaurant(restaurant $restaurant): static
+    public function removeRestaurant(Restaurant $restaurant): static
     {
         if ($this->restaurant->removeElement($restaurant)) {
             // set the owning side to null (unless already changed)
