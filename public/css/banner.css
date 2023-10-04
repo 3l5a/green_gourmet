@@ -1,40 +1,51 @@
-/* Styles pour la bannière */
-.banner {
-    width: 100%;
-    height: 200px; /* Ajustez la hauteur selon vos besoins */
-    display: flex;
-    flex-direction: column; /* Partie gauche au-dessus de la partie droite */
+header {
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(196,253,122,1) 100%); 
 }
 
-/* Style pour la partie supérieure (80%) de la bannière */
-.top-section {
-    flex: 8; /* Utilisez flex pour diviser l'espace verticalement (80%) */
-    background-color: #3498db; /* Couleur de fond de la partie supérieure */
-    color: #ffffff; /* Couleur du texte */
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+.banner-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
 
-/* Style pour la partie inférieure (20%) de la bannière */
-.bottom-section {
-    flex: 2; /* Utilisez flex pour diviser l'espace verticalement (20%) */
-    background-color: #2ecc71; /* Couleur de fond de la partie inférieure */
-    color: #ffffff; /* Couleur du texte */
-    text-align: center;
-    display: flex;
-    justify-content: space-around; /* Aligner horizontalement les boutons */
-    border-top: 20px solid #e74c3c; /* Ajouter une bordure de 20% en haut */
-}
+        div {
+            display: flex;
+            align-items: center;
+        }
 
-/* Style pour les boutons dans la partie inférieure */
-.button {
-    padding: 100 em;
-    background-color: #e74c3c; /* Couleur de fond des boutons */
-    color: #ffffff; /* Couleur du texte des boutons */
-    text-align: center;
-    text-decoration: none;
-    margin: 100 em;
-    border-radius: 100 em;
-}
+        .logo {
+            justify-content: center;
+            padding: 3rem 0;
+
+             a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                font-family: var(--title-font);
+                font-size: 2.5rem;
+                font-weight: bolder;
+             }
+
+             p em {
+                background-color: black;
+                color: #1e8e3d;
+                padding: 0 .25rem;
+             }
+        }
+} 
+
+.user {
+    justify-content: end;
+  }
+  
+  .banner-nav ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 1rem 0;
+  }
+
+  .user {
+    gap: 1rem;
+  }
+
+  

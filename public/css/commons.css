@@ -1,0 +1,27 @@
+:root {
+  --title-font: 'Gabarito', cursive;
+  --text-font: 'IBM Plex Serif', serif;
+}
+
+section, nav, form {
+  max-width: 1024px;
+  width: 80%;
+  margin: auto;
+}
+
+body {
+  font-family: var(--text-font);
+}
+
+h1, h2, h3 {
+  font-family: var(--title-font);
+}
+
+
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+
