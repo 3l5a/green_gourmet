@@ -1,6 +1,7 @@
 :root {
   --title-font: 'Gabarito', cursive;
   --text-font: 'IBM Plex Serif', serif;
+  --primary: #1e8e3d;
 }
 
 section, nav, form {
@@ -16,7 +17,6 @@ body {
 h1, h2, h3 {
   font-family: var(--title-font);
 }
-
 
 a {
   color: black;
