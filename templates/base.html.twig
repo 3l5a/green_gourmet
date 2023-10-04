@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    
+    {% block stylesheets %}
+			<link rel="stylesheet" href="/css/banner.css">
+	{% endblock %}
+</head>
+<body>
+    <div class="banner">
+        <div class="top-section">
+            <!-- Contenu de la partie supérieure de la bannière -->
+            <a class="button" href="{{ path ('app_login') }}">Connexion</a>
+            {% if is_granted('ROLE_ADMIN') %}<a class="button" href="{{ path ('admin') }}">Administration</a>{% endif %}
+        </div>
+        <div class="bottom-section">
+            <!-- Contenu de la partie inférieure de la bannière -->
+            <a class="button" href="{{ path ('app_home') }}">Accueil</a>
+            <a class="button" href="#">Les restaurants</a>
+            <a class="button" href="{{ path ('app_about_us') }}">Green Gourmet</a>
+        </div>
+    </div>
+    {% block body %}{% endblock %}
+</body>
 </html>

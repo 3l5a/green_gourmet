@@ -2,9 +2,8 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
                 class: App\Entity\User
@@ -15,10 +14,22 @@ security:
             security: false
         main:
             lazy: true
+            # provider that you set earlier inside providers
             provider: app_user_provider
+            custom_authenticator: App\Security\UsersAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: app_home
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: true
 
             # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true

@@ -2,7 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Departement;
+use App\Entity\City;
 use App\Entity\User;
+use App\Entity\Category;
+use App\Entity\Restaurant;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -40,6 +44,14 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud('User', 'fas fa-restaurant', Restaurant::class);
+        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-restaurant', User::class);
+        yield MenuItem::linkToCrud('Restaurant', 'fas fa-restaurant', Restaurant::class);
+
+        yield MenuItem::linkToCrud('Departement', 'fas fa-restaurant', Departement::class);
+
+        yield MenuItem::linkToCrud('Ville', 'fas fa-restaurant', City::class);
+
+        yield MenuItem::linkToCrud('Categories', 'fas fa-restaurant', Category::class);
+
     }
 }

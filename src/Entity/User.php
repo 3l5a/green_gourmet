@@ -29,7 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\ManyToMany(targetEntity: restaurant::class, inversedBy: 'user')]
+    #[ORM\ManyToMany(targetEntity: Restaurant::class, inversedBy: 'user')]
     private Collection $favorite;
 
     public function __construct()
@@ -108,14 +108,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, restaurant>
+     * @return Collection<int, Restaurant>
      */
     public function getFavorite(): Collection
     {
         return $this->favorite;
     }
 
-    public function addFavorite(restaurant $favorite): static
+    public function addFavorite(Restaurant $favorite): static
     {
         if (!$this->favorite->contains($favorite)) {
             $this->favorite->add($favorite);
@@ -124,7 +124,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeFavorite(restaurant $favorite): static
+    public function removeFavorite(Restaurant $favorite): static
     {
         $this->favorite->removeElement($favorite);
 
