@@ -2,7 +2,42 @@ section.index-restaurants {
     display: flex;
     gap: 3rem;
     align-items: start;
+/* research part */
 
+.selection {
+  background-color: var(--secondary);
+  padding: 3rem;
+}
+
+.search-city, .search-category {
+  .label {
+    font-family: var(--title-font);
+    margin: 2rem 0 .5rem 0;
+  }
+
+  .input[select] {
+    border: none;
+    background-color: white;
+    border-radius: 0;
+  }
+
+}
+
+.submit {
+  margin: 2rem 0;
+  border-radius: 2px;
+  border: none;
+  background-color: var(--primary);
+  font-family: var(--title-font);
+  font-size: 1.3rem;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+.search-city {
+}
+
+/* cards section */
   .card {
     display: flex;
     align-items: space-between;

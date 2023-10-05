@@ -6,14 +6,20 @@
     <section class="index-restaurants">
         <div class="selection">
             {{ form_start(formView) }}
-                {{ form_row(formView.city, {'attr': {'class': 'field'}}) }}
-                {{ form_row(formView.category, {'attr': {'class': 'field'}}) }}
-                <div class="">
-                        <button type="submit" class="">
-                            <i class=""></i>
-                            Valider
-                        </button>
+                <div class="search-city">
+                    <div class="label">{{ form_label(formView.city) }}</div>
+                    <div class="input">{{ form_widget(formView.city) }}</div>
+                </div>
+                <div class="search-category">
+                    <div class="label">{{ form_label(formView.category) }}</div>
+                    <div class="input">{{ form_widget(formView.category) }}</div>
                     </div>
+                <div class="">
+                    <button type="submit" class="submit">
+                    <i class=""></i>
+                    Valider
+                    </button>
+                </div>
             {{ form_end (formView) }}
         </div>
         {# {{ dump(restaurants) }} #}
