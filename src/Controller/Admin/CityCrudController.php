@@ -5,8 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\City;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 
 
 class CityCrudController extends AbstractCrudController
@@ -19,8 +19,10 @@ class CityCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name'),
-            TextField::new('zipcode'),
+            IntegerField::new('zipcode'),
             AssociationField::new('departement'),
         ];
     }
+
+    
 }
