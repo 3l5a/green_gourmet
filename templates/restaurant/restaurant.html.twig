@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voici votre restaurant{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+       <div class="" >
+           <h6>{{ restaurant.name }}</h6>
+           <span class="">{{ restaurant.address }}</span>
+           {% if restaurant.category %}
+            <span class="">{{ restaurant.category.name }}</span>
+           {% endif %}
+           {% if restaurant.city %}
+            <span class="">{{ restaurant.city.name }}</span>
+           {% endif %}
+           {% if restaurant.description %}
+            <span class="">{{ restaurant.description }}</span>
+           {% endif %}
+       </div>
+
+</div>
+{% endblock %}

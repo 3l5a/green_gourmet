@@ -31,6 +31,9 @@ class Restaurant
     #[ORM\ManyToOne(inversedBy: 'restaurant')]
     private ?Category $category = null;
 
+    #[ORM\Column(length: 2000, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -112,6 +115,18 @@ class Restaurant
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
