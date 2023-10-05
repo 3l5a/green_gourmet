@@ -34,9 +34,6 @@ section.index-restaurants {
   cursor: pointer;
 }
 
-.search-city {
-}
-
 /* cards section */
   .card {
     display: flex;
