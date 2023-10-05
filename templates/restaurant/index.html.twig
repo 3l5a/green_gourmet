@@ -1,32 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Trouvez votre restaurant{% endblock %}
+{% block title %}Green Gourmet - Trouvez votre restaurant{% endblock %}
 
 {% block body %}
-    {{ form_start(formView) }}
-        {{ form_row(formView.city) }}
-        {{ form_row(formView.category) }}
-        <div class="">
-			<button type="submit" class="">
-				<i class=""></i>
-				Valider
-			</button>
-		</div>
-    {{ form_end (formView) }}
-    {{ dump(restaurants) }}
-    {% for restaurant in restaurants %}
-    <div class="example-wrapper">
-        <div class="" >
-            <h6>{{ restaurant.name }}</h6>
-            <span class="">{{ restaurant.address }}</span>
-            {% if restaurant.category %}
-                <span class="">{{ restaurant.category.name }}</span>
-            {% endif %}
-            {% if restaurant.city %}
-                <span class="">{{ restaurant.city.name }}</span>
-            {% endif %}
-            <a href="{{path('app_restaurant', {'id' : restaurant.id})}}">Y aller!!</a>
+    <section class="index-restaurants">
+        <div class="selection">
+            {{ form_start(formView) }}
+                {{ form_row(formView.city, {'attr': {'class': 'field'}}) }}
+                {{ form_row(formView.category, {'attr': {'class': 'field'}}) }}
+                <div class="">
+                        <button type="submit" class="">
+                            <i class=""></i>
+                            Valider
+                        </button>
+                    </div>
+            {{ form_end (formView) }}
         </div>
-    </div>
-    {% endfor %}
+        {# {{ dump(restaurants) }} #}
+        <div class="all-restaurants">
+            {% for restaurant in restaurants %}
+            <div class="card">
+                <div class="image">
+                </div>
+                <div class="infos" >
+                    <div class="resume">
+                        <h6>{{ restaurant.name }}</h6>
+                        {# <p class="">{{ restaurant.address }}</p> #}
+                        {% if restaurant.category %}
+                            <p class="category">{{ restaurant.category.name }}</p>
+                        {% endif %}
+                        {% if restaurant.city %}
+                            <p class="city">{{ restaurant.city.name }}</p>
+                        {% endif %}
+                    </div>
+
+                        {% if restaurant.description %}
+                            <p class="desc">{{ restaurant.description|u.truncate(35, '...') }}</p>
+                        {% endif %}
+
+                    <a href="{{path('app_restaurant', {'id' : restaurant.id})}}">En savoir plus</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

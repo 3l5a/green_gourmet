@@ -1,0 +1,74 @@
+section.index-restaurants {
+    display: flex;
+    gap: 3rem;
+    align-items: start;
+
+  .card {
+    display: flex;
+    align-items: space-between;
+  }
+
+  .all {
+    display: flex;
+  }
+
+  .card {
+    width: 40rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    box-shadow: 5px 5px 15px rgb(227, 226, 226);
+    box-sizing: border-box;
+    background-color: var(--secondary);
+
+  }
+
+  .image {
+    background-image: url(../images/restaurant.jpg);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    border-radius: 3px  0 0 3px;
+  }
+
+  .infos {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 1rem;
+
+        .resume {
+            text-align: end;
+            margin-bottom: 1rem;
+        }
+
+        .category {
+            color: var(--primary);
+            font-family: var(--title-font);
+            font-size: 1rem;
+            font-weight: 200;
+        }
+
+
+        h6 {
+            font-family: var(--title-font);
+            font-size: 2rem;
+        }
+
+        .desc {
+            text-align: justify;
+            font-size: .9rem;
+            line-height: 1.2rem;
+        }
+
+        a {
+            font-family: var(--title-font);
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 2rem;
+        }
+  }
+}
