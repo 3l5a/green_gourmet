@@ -5,8 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Restaurant;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 
 
@@ -25,8 +25,8 @@ class RestaurantCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             TextField::new('address'),
-            TextEditorField::new('description'),
-            CollectionField::new('city'),
+            TextareaField::new('description') -> renderAsHtml(),
+            AssociationField::new('city'),
         ];
     }
     
