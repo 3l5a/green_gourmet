@@ -4,20 +4,25 @@
 
 {% block body %}
 
-<div class="example-wrapper">
-       <div class="" >
-           <h6>{{ restaurant.name }}</h6>
-           <span class="">{{ restaurant.address }}</span>
-           {% if restaurant.category %}
-            <span class="">{{ restaurant.category.name }}</span>
-           {% endif %}
-           {% if restaurant.city %}
-            <span class="">{{ restaurant.city.name }}</span>
-           {% endif %}
-           {% if restaurant.description %}
-            <span class="">{{ restaurant.description }}</span>
-           {% endif %}
-       </div>
-
-</div>
+<section class="restaurant">
+    <div class="image">
+    </div>
+    <div class="resume">
+           <div class="info" >
+               <h6>{{ restaurant.name }}</h6>
+               {% if restaurant.category %}
+                <p class="category">{{ restaurant.category.name }}</p>
+               {% endif %}
+               <p class="address">{{ restaurant.address }}</p>
+               {% if restaurant.city %}
+                <p class="city">{{ restaurant.city.name }}</p>
+               {% endif %}
+            </div>
+            <div>
+               {% if restaurant.description %}
+                <p class="desc">{{ restaurant.description }}</p>
+               {% endif %}
+           </div>
+    </div>
+</section>
 {% endblock %}

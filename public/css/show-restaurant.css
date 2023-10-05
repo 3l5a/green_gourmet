@@ -1,0 +1,44 @@
+section.restaurant {
+    margin-bottom: 5rem;
+    background-color: var(--secondary);
+    padding-bottom: 5rem;
+
+  .image {
+    height: 20rem;
+    width: 100%;
+    background-image: url(../images/restaurant.jpg);
+    background-size: cover;
+    background-position: 50% 75%;
+    background-repeat: no-repeat;
+  }
+
+  .resume {
+    padding-right: 5rem;
+  }
+
+  .info {
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  h6 {
+     font-family: var(--title-font);
+     font-size: 3rem;
+     padding-top: 2rem;
+  }
+
+  .category {
+    font-family: var(--title-font);
+    color: var(--primary);
+  }
+
+  .desc {
+    padding-left: 5rem;
+    margin-top: 3rem;
+    text-align: justify;
+  }
+}
+
+
