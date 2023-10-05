@@ -1,25 +1,41 @@
+section.login {
+    display: grid;
+    align-items: center;
+}
+
 form.login {
+    box-sizing: border-box;
     background-color: var(--secondary);
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    box-shadow: 0 0 40px rgba(228, 225, 223, 0.6);
     margin-bottom: 5rem;
-    padding: 3rem;
+    padding: 5rem 8rem;
+    display: block;
+    width: auto;
+
+    h1 {
+        font-size: 1.5rem;
+        padding-bottom: 2rem;
+    }
 
     input {
         display: block;
-        background-color: rgba(48, 46, 46, 0.07);
         border: none;
         border-radius: 2px;
-        height: 25px;
-        width: 80%;
+        height: 2rem;
+        width: 100%;
         outline: none;
+        margin-bottom: 2rem;
     }
 
     label {
         display: block;
-        margin: 1rem;
+        margin: 1rem 0;
     }
+}
+
+div.submit {
+    width: 100%;
+    display: flex;
+    justify-content: end;
 }
 
 button[type=submit] {
@@ -31,4 +47,5 @@ button[type=submit] {
     background-color: var(--primary);
     cursor: pointer;
     border: none;
+    float: left;
 }
