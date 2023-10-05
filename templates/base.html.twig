@@ -13,6 +13,7 @@
             <link rel="stylesheet" href="{{ asset('css/commons.css') }}">
             <link rel="stylesheet" href="{{ asset('css/banner.css') }}">
             <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/index-restaurants.css') }}">
         {% endblock %}
 
         {% block javascripts %}
@@ -63,8 +64,7 @@
                         </g></svg>
                     </a>
                 </div>
-                {% endif %}
-                {% if is_granted('ROLE_USER') %}
+                {% elseif is_granted('ROLE_USER') %}
                 <div class="admin-panel">
                     <a class="button" href="{{ path ('app_profile') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="30" height="30">
