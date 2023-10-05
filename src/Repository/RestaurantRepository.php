@@ -36,13 +36,20 @@ class RestaurantRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Restaurant
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findByCategoryAndCity($category, $city)
+   {        
+
+        $query = $this -> createQueryBuilder('r');
+            if($category !== null){
+            $query = $query
+                ->where ('r.category = :category')
+                ->setParameter('category', $category);
+            } 
+            if($city !== null){
+                $query = $query
+                ->andwhere ('r.city = :city')
+                ->setParameter('city', $city);
+            }
+        return $query->getQuery()->getResult();
+   }
 }
