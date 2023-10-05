@@ -41,7 +41,7 @@
                     </div>
 
                         {% if restaurant.description %}
-                            <p class="desc">{{ restaurant.description|u.truncate(35, '...') }}</p>
+                            <p class="desc">{{ restaurant.description|u.truncate(250, '...') }}</p>
                         {% endif %}
 
                     <a href="{{path('app_restaurant', {'id' : restaurant.id})}}">En savoir plus</a>
