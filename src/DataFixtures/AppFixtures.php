@@ -159,51 +159,50 @@ public function load(ObjectManager $manager): void
     $faker = Factory::create('fr_FR');
 
     // Générez des données pour la table departement
-    for ($i = 0; $i < 3; $i++) { // Générer 3 enregistrements de départements (ajustez selon vos besoins)
-        $name = $faker->city; // Générer un nom de département fictif (vous pouvez ajuster le générateur en fonction de vos besoins)
-        $number = $faker->numberBetween(1, 99); // Générer un nombre aléatoire entre 1 et 100
-        
-        // Créez une nouvelle instance de l'entité Departement (adaptez au nom de votre entité)
-        $departement = new Departement();
-        $departement->setName($name);
-        $departement->setNumber($number);
+
+// Générez des données pour la table departement
+for ($i = 0; $i < 3; $i++) { // Générer 3 enregistrements de départements (ajustez selon vos besoins)
+    $name = $faker->city; // Générer un nom de département fictif (vous pouvez ajuster le générateur en fonction de vos besoins)
+    $number = $faker->numberBetween(1, 99); // Générer un nombre aléatoire entre 1 et 100
+    
+    // Créez une nouvelle instance de l'entité Departement (adaptez au nom de votre entité)
+    $departement = new Departement();
+    $departement->setName($name);
+    $departement->setNumber($number);
+    
+    // Persistez l'entité dans la base de données
+    $manager->persist($departement);
+
+    for ($j = 0; $j < 3; $j++) { // Générer 3 enregistrements de villes (ajustez selon vos besoins)
+        $cityName = $faker->city; // Générer un nom de ville aléatoire
+        $zipCode = $faker->numberBetween(10000, 99999); // Générer un code postal fictif à 4 chiffres
+        // Créez une nouvelle instance de l'entité City (adaptez au nom de votre entité)
+        $city = new City();
+        $city->setName($cityName);
+        $city->setZipCode($zipCode);
+        $city->setDepartement($departement);
         
         // Persistez l'entité dans la base de données
-        $manager->persist($departement);
+        $manager->persist($city);
 
-        for ($i = 0; $i < 3; $i++) { // Générer 3 enregistrements de villes (ajustez selon vos besoins)
-            $name = $faker->city; // Générer un nom de ville aléatoire
-            $zipCode = $faker->numberBetween(1, 99);
-            // Créez une nouvelle instance de l'entité City (adaptez au nom de votre entité)
-            $city = new City();
-            $city->setName($name);
-            $city->setZipCode($zipCode);
-            $city->setDepartement($departement);
-            
-            // Persistez l'entité dans la base de données
-            $manager->persist($city);
-        for ($i = 0; $i < 2; $i++) { // Générer 5 enregistrements de restaurants (ajustez selon vos besoins)
-            $name = 'Le ' . $faker->company; // Ajoutez "Le" au nom du restaurant généré
-            $address = random_int(1, 99) . ' ' . $faker->street_name; // Générer une adresse fictive
-            
+        for ($k = 0; $k < 3; $k++) { // Générer 10 enregistrements de restaurants (ajustez selon vos besoins)
+            $restaurantName = 'Le ' . $faker->company; // Ajoutez "Le" au nom du restaurant généré
+            $address = $faker->streetAddress; // Générer une adresse fictive
             
             // Créez une nouvelle instance de l'entité Restaurant (adaptez au nom de votre entité)
             $restaurant = new Restaurant();
-            $restaurant->setName($name);
+            $restaurant->setName($restaurantName);
             $restaurant->setAddress($address);
             $restaurant->setCity($city);
-        
+
             // Persistez l'entité dans la base de données
             $manager->persist($restaurant);
         }
     }
-        
-        
-        }
-        $manager->flush();
+}
 
+$manager->flush();
 
     }
 
 }
-
