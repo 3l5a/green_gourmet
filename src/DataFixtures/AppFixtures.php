@@ -138,6 +138,18 @@ public function load(ObjectManager $manager): void
     $category = new Category();
     $category->setName('Vegan');
     $manager->persist($category);
+
+    $category = new Category();
+    $category->setName('Halal');
+    $manager->persist($category);
+
+    $category = new Category();
+    $category->setName('Pesco-végétarien');
+    $manager->persist($category);
+
+    $category = new Category();
+    $category->setName('Zero déchets');
+    $manager->persist($category);
    
 
     // Incluez le fichier autoload.php de Composer pour charger Faker
@@ -170,10 +182,10 @@ public function load(ObjectManager $manager): void
             
             // Persistez l'entité dans la base de données
             $manager->persist($city);
-        }
-        for ($i = 0; $i < 5; $i++) { // Générer 5 enregistrements de restaurants (ajustez selon vos besoins)
+        for ($i = 0; $i < 2; $i++) { // Générer 5 enregistrements de restaurants (ajustez selon vos besoins)
             $name = 'Le ' . $faker->company; // Ajoutez "Le" au nom du restaurant généré
-            $address = $faker->address; // Générer une adresse fictive
+            $address = random_int(1, 99) . ' ' . $faker->street_name; // Générer une adresse fictive
+            
             
             // Créez une nouvelle instance de l'entité Restaurant (adaptez au nom de votre entité)
             $restaurant = new Restaurant();
@@ -184,6 +196,8 @@ public function load(ObjectManager $manager): void
             // Persistez l'entité dans la base de données
             $manager->persist($restaurant);
         }
+    }
+        
         
         }
         $manager->flush();
