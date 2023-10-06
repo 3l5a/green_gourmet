@@ -27,6 +27,7 @@ class RestaurantCrudController extends AbstractCrudController
             TextField::new('address'),
             TextareaField::new('description') -> renderAsHtml(),
             AssociationField::new('city'),
+            AssociationField::new('category'),
         ];
     }
     
